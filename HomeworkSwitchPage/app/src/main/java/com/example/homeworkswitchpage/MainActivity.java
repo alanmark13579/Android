@@ -17,14 +17,17 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-//透過下方程式碼，取得Activity中執行的個體。
+     //透過下方程式碼，取得Activity中執行的個體，並切換到fragment1。
         manager = getSupportFragmentManager();
-
-
+        transaction = manager.beginTransaction();
+        FragmentFirst fragment1 = new FragmentFirst();
+        transaction.replace(R.id.center, fragment1, "fragment1");
+        bool = false ;
+        transaction.commit();
     }
     //換頁的按鈕設定
     public void onClick(View view) {
-//透過下方程式碼，取得Activity中執行的個體。
+    //透過下方程式碼，取得Activity中執行的個體。
         transaction = manager.beginTransaction();
         if(bool == true){
             FragmentFirst fragment1 = new FragmentFirst();
@@ -36,7 +39,7 @@ public class MainActivity extends AppCompatActivity {
             transaction.replace(R.id.center, fragment2, "fragment2");
             bool = true ;
         }
-//呼叫commit讓變更生效。
+    //呼叫commit讓變更生效。
         transaction.commit();
     }
 
