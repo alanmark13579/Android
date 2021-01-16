@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".MainActivity">
-
+    <!--switch button-->
     <Button
         android:id="@+id/Button1"
         android:layout_width="wrap_content"
@@ -17,7 +17,7 @@
         app:layout_constraintStart_toStartOf="@+id/center"
         app:layout_constraintTop_toTopOf="@+id/center"
         tools:ignore="MissingConstraints,OnClick" />
-
+    <!--給fragment show textview的layout-->
     <LinearLayout
         android:id="@+id/center"
         android:layout_width="match_parent"
