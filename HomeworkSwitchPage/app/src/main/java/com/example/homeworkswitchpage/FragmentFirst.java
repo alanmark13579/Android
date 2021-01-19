@@ -1,56 +1,43 @@
 package com.example.homeworkswitchpage;
 
+
 import android.os.Bundle;
 
+
+
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-/**
- * A simple {@link Fragment} subclass.
- * Use the {@link FragmentFirst#newInstance} factory method to
- * create an instance of this fragment.
- */
+import android.widget.Button;
+import android.widget.TextView;
+
+
 public class FragmentFirst extends Fragment {
-
-    // TODO: Rename parameter arguments, choose names that match
-    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-    private static final String ARG_PARAM1 = "param1";
-    private static final String ARG_PARAM2 = "param2";
-
-    // TODO: Rename and change types of parameters
-    private String mParam1;
-    private String mParam2;
-
-    public FragmentFirst() {
-
-    }
-
-    // TODO: Rename and change types and number of parameters
-    public static FragmentFirst newInstance(String param1, String param2) {
-        FragmentFirst fragment = new FragmentFirst();
-        Bundle args = new Bundle();
-        args.putString(ARG_PARAM1, param1);
-        args.putString(ARG_PARAM2, param2);
-        fragment.setArguments(args);
-        return fragment;
-    }
-
-    @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        if (getArguments() != null) {
-            mParam1 = getArguments().getString(ARG_PARAM1);
-            mParam2 = getArguments().getString(ARG_PARAM2);
-        }
-    }
-
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_first, container, false);
+        FragmentManager manager = getActivity().getSupportFragmentManager();
+        FragmentTransaction transaction = manager.beginTransaction();
+       // super.onCreate(savedInstanceState);
+        View view = inflater.inflate(R.layout.fragment_first, container, false);
+        Button SwitchButton =(Button) view.findViewById(R.id.SwitchButton);
+       TextView TextView1 = view.findViewById(R.id.textView1);
+        //使用匿名型別實作Click Event。
+        SwitchButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                //do something
+                FragmentSecond fragment2 = new FragmentSecond(); //初始化接著要switch的fragment
+                transaction.replace(R.id.center, fragment2, "fragment2"); //switch　framgent
+                transaction.commit(); //使framgent變化生效
+            }
+        });
+        return view ;
     }
+
 }
