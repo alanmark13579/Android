@@ -37,6 +37,13 @@ public class FragmentFirst extends Fragment {
                 transaction.commit(); //使framgent變化生效
             }
         });
+        /*使用匿名函式實作Click Event。
+        SwitchButton.setOnClickListener(v -> {
+            //do something
+            FragmentSecond fragment2 = new FragmentSecond(); //初始化接著要switch的fragment
+            transaction.replace(R.id.center, fragment2, "fragment2"); //switch　framgent
+            transaction.commit(); //使framgent變化生效
+        });*/
         return view ;
     }
 
